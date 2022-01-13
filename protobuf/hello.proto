@@ -1,0 +1,9 @@
+syntax = "proto3";
+
+package protobuf;
+
+option go_package="github.com/HAOlowkey/grpc-demo/protobuf";
+
+message String{
+    string value = 1;
+}

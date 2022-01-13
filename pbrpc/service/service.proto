@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+package service;
+
+option go_package="github.com/HAOlowkey/grpc-demo/pbrpc/service";
+
+message Request {
+    string value = 1;
+}
+
+message Response {
+    string value = 1;
+}

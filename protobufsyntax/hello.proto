@@ -1,0 +1,40 @@
+syntax = "proto3";
+
+package grpc.demo.hello;
+
+option go_package="github.com/HAOlowkey/grpc-demo/grpc";
+
+import "google/protobuf/any.proto";
+
+message Response {
+    reserved 10 , 15 to 20;
+    reserved "key2";
+    string value = 1;
+    optional string key = 2;
+    int32 code = 3;
+    repeated Result response = 4;
+    map <string,Result> result_map = 5;
+    Result result = 6;
+    oneof oneof_sample {
+        Stub1 stub1 = 7;
+        Stub2 stub2 = 8;
+    }
+    google.protobuf.Any details = 9;         // 需要先import "google/protobuf/any.proto"; 然后再生成代码时通过-I 导入
+}
+
+message Result {
+    string response = 1;
+}
+
+message Stub1 {
+    string value = 1;
+}
+message Stub2 {
+    string value = 1;
+}
+
+enum option {
+    option_a = 0;
+    option_b = 1;
+    option_c = 2;
+}

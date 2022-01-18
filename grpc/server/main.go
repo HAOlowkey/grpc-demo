@@ -6,6 +6,7 @@ import (
 	"io"
 	"net"
 
+	"github.com/HAOlowkey/grpc-demo/grpc/auth"
 	"github.com/HAOlowkey/grpc-demo/grpc/protocol"
 	"google.golang.org/grpc"
 )
@@ -38,7 +39,7 @@ func (s *Service) Chat(stream protocol.HelloService_ChatServer) error {
 }
 
 func main() {
-	server := grpc.NewServer()
+	server := grpc.NewServer(grpc.ChainUnaryInterceptor(auth.GrpcAuthUnaryServerInterceptor()))
 
 	protocol.RegisterHelloServiceServer(server, new(Service))
 

@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+package grpc.demo.protocol;
+
+option go_package="github.com/HAOlowkey/grpc-demo/grpc/protocol";
+
+service HelloService {
+    rpc Hello(Request) returns(Response);
+    rpc Chat(stream Request) returns (stream Response);
+}
+
+message Request {
+    string value = 1;
+}
+
+message Response {
+    string value = 1;
+}
